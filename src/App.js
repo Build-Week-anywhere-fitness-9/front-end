@@ -1,6 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
 import './App.css';
-import WelcomeScreen from './Components/WelcomeScreen';
+import WelcomeScreen from './components/WelcomeScreen';
 
 function App() {
   return (
