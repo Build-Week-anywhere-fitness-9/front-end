@@ -10,8 +10,6 @@ import {
   TextField,
   CssBaseline,
   Button,
-  FormControlLabel,
-  Checkbox,
 } from "@mui/material";
 
 const initialForm = {
@@ -98,16 +96,17 @@ function Login() {
             error={!!formErrors.password}
             helperText={formErrors.password}
           />
-
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            sx={{ mt: 3, mb: 2 }}
-            disabled={disabled}
-          >
-            Login
-          </Button>
+          <Link to="/classlist">
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              sx={{ mt: 3, mb: 2 }}
+              disabled={disabled}
+            >
+              Login
+            </Button>
+          </Link>
         </Box>
       </Box>
       <Typography

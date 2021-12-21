@@ -8,6 +8,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
+        <h1>Anywhere Fitness</h1>
         <nav>
           <Link to="/login">Login</Link>
           <Link to="/signup">SignUp</Link>
