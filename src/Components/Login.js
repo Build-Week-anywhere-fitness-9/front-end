@@ -1,7 +1,18 @@
 import React, { useState, useEffect } from "react";
 import schema from "../Validation/loginScheme";
 import * as yup from "yup";
-import { SchemaRounded } from "@mui/icons-material";
+
+import {
+  Container,
+  Typography,
+  Box,
+  Link,
+  TextField,
+  CssBaseline,
+  Button,
+  FormControlLabel,
+  Checkbox,
+} from "@mui/material";
 
 const initialForm = {
   email: "",
@@ -45,33 +56,74 @@ function Login() {
   }, [formState]);
 
   return (
-    <form className="login-container" onSubmit={submitForm}>
-      <div className="login-group">
-        <label>
-          <h3>Email:</h3>
-          <input
-            value={formState.email}
-            type="email"
+    <Container component="main" maxWidth="xs">
+      <CssBaseline />
+      <Box
+        sx={{
+          marginTop: 8,
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
+      >
+        <Typography component="h1" variant="h5">
+          Login
+        </Typography>
+        <Box component="form" onSubmit={submitForm} noValidate sx={{ mt: 1 }}>
+          <TextField
+            margin="normal"
+            required
+            fullWidth
+            id="email"
+            label="Email Address"
             name="email"
-            placeholder="Enter Email"
+            value={formState.email}
+            autoComplete="email"
+            autoFocus
             onChange={handleChange}
+            error={!!formErrors.email}
+            helperText={formErrors.email}
           />
-        </label>
-        <label>
-          <h3>PassWword:</h3>
-          <input
-            value={formState.password}
-            type="password"
+          <TextField
+            margin="normal"
+            required
+            fullWidth
             name="password"
-            placeholder="Enter password"
+            label="Password"
+            type="password"
+            id="password"
+            value={formState.password}
+            autoComplete="current-password"
             onChange={handleChange}
+            error={!!formErrors.password}
+            helperText={formErrors.password}
           />
-        </label>
-        <div className="login-button">
-          <button disabled={disabled}>Login</button>
-        </div>
-      </div>
-    </form>
+
+          <Button
+            type="submit"
+            fullWidth
+            variant="contained"
+            sx={{ mt: 3, mb: 2 }}
+            disabled={disabled}
+          >
+            Login
+          </Button>
+        </Box>
+      </Box>
+      <Typography
+        sx={{ mt: 2 }}
+        variant="body2"
+        color="text.secondary"
+        align="center"
+      >
+        {"Copyright © "}
+        <Link color="inherit" href="/">
+          Anywhere Fitness
+        </Link>{" "}
+        {new Date().getFullYear()}
+        {"."}
+      </Typography>
+    </Container>
   );
 }
 
