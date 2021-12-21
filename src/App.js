@@ -1,21 +1,13 @@
+import { Routes, Route } from 'react-router-dom';
 import './App.css';
+import WelcomeScreen from './Components/WelcomeScreen';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <p>
-          Testing deployment
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Routes>
+        <Route path='/' element={<WelcomeScreen />} />
+      </Routes>
     </div>
   );
 }
