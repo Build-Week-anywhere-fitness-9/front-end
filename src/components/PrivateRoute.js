@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext, createContext } from "react";
-import * as firebase from 'firebase/app';
-import 'firebase/auth';
+import firebase from 'firebase/compat/app';
+import 'firebase/compat/auth';
 
 firebase.initializeApp({
     apiKey: "AIzaSyAXWKE916Fa4VWNnsxu9mYvAJF9fQYJqqI",
