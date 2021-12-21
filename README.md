@@ -5,19 +5,24 @@ Product Vision Document: https://abounding-roarer-17c.notion.site/Product-Vision
 # Using Redux (npm i react-redux)
 
 import { connect } from 'react-redux';
-*** import whatever actions you need ***
+
+***import whatever actions you need***
+
 import { getClasses, getUser } from '../actions';
 
-*** state and actions are accessed through props***
-const ComponentUsingState = props => {
-***  props.getClasses(); ***
-***  props.user ***
-***  etc. ***
+***state and actions are accessed through props***
 
-*** If other state is needed for only this component, set up here with { useState } as usual ***
+const ComponentUsingState = props => {
+- props.getClasses();
+- props.user
+- etc.
+
+***If other state is needed for only this component, set up here with { useState } as usual***
+
 }
 
-*** pick and choose which parts of state you need from all of the following ***
+***pick and choose which parts of state you need from all of the following***
+
 - user: { username, password }
     - username: ''
     - password: ''
@@ -34,28 +39,50 @@ const ComponentUsingState = props => {
     - participants: []
     - owner: ''
 
-*** format like this (outside of component function) with the state data you choose ***
+***format like this (outside of component function) with the state data you choose***
+
 const mapStateToProps = state => {
+
     return {
+
         user: state.user, 
+
         username: state.user.username, 
+
         password: state.user.password,
+
         classes: state.classes,
-        classType: state.classes.type, *** string ***
-        maxSize: state.classes.maxSize, *** number ***
-        date: state.classes.date, *** number ***
-        time: state.classes.time, *** number ***
-        duration: state.classes.duration, *** number ***
-        intensity: state.classes.intensity, *** number ***
-        nameOfClass: state.classes.name, *** string ***
-        cost: state.classes.cost, *** number ***
-        location: state.classes.location, *** string ***
-        participants: state.classes.participants, *** array containting participants ***
-        owner: state.classes.owner, *** string ***
-        isFetching: state.isFetching, /* boolean */
-        error: state.error /* string */
+
+        classType: state.classes.type,
+
+        maxSize: state.classes.maxSize,
+
+        date: state.classes.date,
+
+        time: state.classes.time,
+
+        duration: state.classes.duration,
+
+        intensity: state.classes.intensity,
+
+        nameOfClass: state.classes.name,
+
+        cost: state.classes.cost,
+
+        location: state.classes.location,
+
+        participants: state.classes.participants,
+
+        owner: state.classes.owner,
+
+        isFetching: state.isFetching,
+
+        error: state.error
+
     };
+
 };
 
 ***connect state and actions to your component***
+
 export default connect( mapStateToProps, { getClasses, getUser } )( ComponentUsingState );
