@@ -9,12 +9,12 @@ function App() {
   return (
     <div className="App">
       <Fragment>
-        <Routes>
-          <Route path='/' element={<WelcomeScreen />} />
-          <ProvideAuth>
-            <ClassList />
-          </ProvideAuth>
-        </Routes>
+        <ProvideAuth>
+          <Routes>
+            <Route path='/' element={<WelcomeScreen />} />
+            <Route path='/classlist' element={<ClassList />} />
+          </Routes>
+        </ProvideAuth>
       </Fragment>
     </div>
   );
