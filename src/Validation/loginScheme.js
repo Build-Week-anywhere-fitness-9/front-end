@@ -6,6 +6,6 @@ const loginScheme = yup.object().shape({
     .trim()
     .required("Please enter your email address.")
     .email("Invalid email."),
-  password: yup.string().required("Please enter a password."),
+  password: yup.string().trim().required("Please enter a password."),
 });
 export default loginScheme;
