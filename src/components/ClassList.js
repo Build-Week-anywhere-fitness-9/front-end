@@ -4,7 +4,7 @@ import { getClasses } from '../actions';
 import { useNavigate } from 'react-router-dom';
 
 const ClassList = props => {
-    // props.getClasses();
+    props.getClasses();
     const navigate = useNavigate();
 
     const [ participants, setParticipants ] = useState([])
