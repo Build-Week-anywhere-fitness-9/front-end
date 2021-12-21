@@ -1,6 +1,9 @@
 import React from 'react';
+import { useAuth } from './PrivateRoute';
 
 const ClassList = () => {
+    const auth = useAuth();
+
     return (
         <div>
             {/* Search Function:
@@ -23,3 +26,9 @@ const ClassList = () => {
 };
 
 export default ClassList;
+
+// {auth.user ? {
+//     /* what to display if user is signed in */
+// } : (
+//     <Link to='/signin'> Sign In </Link>
+// )}
