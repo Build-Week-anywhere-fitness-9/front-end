@@ -10,7 +10,7 @@ header {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: space-between;
   border-bottom: 2px dashed black;
   background-color: #ced4da;
 }
@@ -24,9 +24,9 @@ nav a {
   padding: 5px;
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
     "Lucida Sans", Arial, sans-serif;
-  border-radius: 15%;
-  padding-left: 8px;
-  padding-right: 8px;
+  border-radius: 5%;
+  padding-left: 30px;
+  padding-right: 30px;
 }
 nav {
   width: 40%;
@@ -35,19 +35,22 @@ nav {
   justify-content: space-evenly;
 }
 h1 {
-  text-decoration: none;
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
     "Lucida Sans", Arial, sans-serif;
   font-size: 1.8rem;
+  margin-left: 20px;
 }
+
 .MuiBox-root {
   background-color: #ced4da;
   padding: 15px;
 }
-body {
+.App {
   width: 100%;
-  background-image: url("https://images.unsplash.com/photo-1434596922112-19c563067271?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTh8fHdvcmtvdXRzfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60");
-  background-size: 100%;
+  background-image: url("https://images.unsplash.com/photo-1434596922112-19c563067271?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NTR8fGd5bXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60");
   background-repeat: no-repeat;
-  background-position: top left;
+  background-position: center;
+  background-size: cover;
+  height: 100vh;
+  margin: 0;
 }
