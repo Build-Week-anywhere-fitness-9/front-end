@@ -13,6 +13,10 @@ header {
   justify-content: space-between;
   border-bottom: 2px dashed black;
   background-color: #ced4da;
+  position: sticky;
+  width: 100%;
+  top: 0;
+  padding: 25px;
 }
 
 nav a {
@@ -27,6 +31,9 @@ nav a {
   border-radius: 5%;
   padding-left: 30px;
   padding-right: 30px;
+}
+nav a:hover {
+  font-size: 1.5rem;
 }
 nav {
   width: 40%;
@@ -47,13 +54,8 @@ h1 {
 }
 body {
   width: 100%;
-  /* background-image: url("https://images.unsplash.com/photo-1434596922112-19c563067271?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NTR8fGd5bXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  height: 100vh;
-  margin: 0; */
-  background-color: whitesmoke;
+
+  background-color: white;
 }
 .WelcomeScreen {
   display: flex;
@@ -68,13 +70,15 @@ body {
 }
 .WelcomeScreen p {
   color: black;
-  font-size: 1rem;
+  font-size: 1.3rem;
   padding: 15px;
   word-spacing: 5px;
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
     "Lucida Sans", Arial, sans-serif;
   display: flex;
+  flex-direction: column;
   width: 50%;
+  margin: auto;
 }
 .par1,
 .par2,
@@ -84,11 +88,50 @@ body {
   justify-content: space-around;
   margin: 10px;
   padding: 10px;
+  margin-bottom: 60px;
 }
+
 img {
-  width: 30%;
-  border-radius: 25%;
+  width: 40%;
+  border-radius: 8%;
+  height: 50vh;
+  display: flex;
+  flex-direction: column;
+  align-self: center;
 }
-/* * {
-  border: 1px solid red;
-} */
+.ending {
+  display: flex;
+  flex-direction: column;
+
+  background-image: url("https://images.unsplash.com/photo-1571902943202-507ec2618e8f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8Z3ltfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  height: 50vh;
+  margin: 0;
+}
+
+.ending,
+h2,
+a {
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+}
+h2 {
+  color: red;
+  font-size: 1.8rem;
+}
+.ending a {
+  text-decoration: none;
+
+  width: 25%;
+  margin: auto;
+  background-color: red;
+  color: #ced4da;
+  font-size: 1.5rem;
+  padding: 10px;
+}
+.ending a:hover {
+  background-color: #ced4da;
+  color: red;
+}
