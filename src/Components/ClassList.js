@@ -1,23 +1,79 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-import { getClasses } from '../actions';
-import { useNavigate } from 'react-router-dom';
+// import { getClasses } from '../actions';
+import { useHistory } from 'react-router-dom';
 
-const ClassList = props => {
-    props.getClasses();
-    const navigate = useNavigate();
+/* dummy data */
+const classes = [
+    {
+      type: 'yoga',
+      maxSize: 10,
+      date: 12212021,
+      time: 2200,
+      duration: 60,
+      intensity: 1,
+      name: 'Yoga with Yani',
+      cost: 25,
+      location: 'San Diego',
+      participants: [
+        'Carlos',
+        'Darla',
+        'William'
+      ],
+      owner: 'Fred'
+    },
+    {
+      type: 'karate',
+      maxSize: 10,
+      date: 12212021,
+      time: 2200,
+      duration: 60,
+      intensity: 1,
+      name: 'Hiya Karate',
+      cost: 10,
+      location: 'Chicago',
+      participants: [],
+      owner: 'George'
+    },
+    {
+      type: 'Pilates',
+      maxSize: 10,
+      date: 12222021,
+      time: 2000,
+      duration: 30,
+      intensity: 3,
+      name: 'Platform Pilates',
+      cost: 15,
+      location: 'New York',
+      participants: [
+        'Max',
+        'Roxanne',
+        'Cobey'
+      ],
+      owner: 'Max'
+    }
+  ]
+
+const ClassList = props => {    
+    const push = useHistory();
 
     const [ participants, setParticipants ] = useState([])
     const focusClasses = [];
     const otherClasses = [];
-    props.classes.map(i => {
+    props.classes.forEach(i => {
         setParticipants(i.participants);
-        participants.forEach(p => props.user.username === p || i.owner ? focusClasses.push(i) : otherClasses.push(i))
+        // return (
+            participants.forEach(p => {
+                props.user.username === p || i.owner ? 
+                    focusClasses.push(i) : 
+                    otherClasses.push(i)
+            })
+        // )
     });
 
     return (
         <div className='classList'>
-            {focusClasses.map(i => {
+            {focusClasses.map(i => (
                 <>
                     <h3>{i.name}</h3>
                     <ul className='genericClassList'>
@@ -32,20 +88,20 @@ const ClassList = props => {
                     </ul>
                     {props.user.username === i.owner ?
                         <>
-                            {/* update navigate to actual edit class file name */}
-                            <button onclick={navigate('/editClass')}>Edit Class</button>
+                            {/* update push to actual edit class file name */}
+                            <button onclick={push('/editClass')}>Edit Class</button>
                             <ul className='classParticipants'>
-                                {i.particpants.map(p => {
+                                {i.particpants.map(p => (
                                     <>
                                         <li>{p}</li>
                                     </>
-                                })}
+                                ))}
                             </ul> 
                         </> : null
                     }
                 </>
-            })}
-            {otherClasses.map(i => {
+            ))}
+            {otherClasses.map(i => (
                 <>
                     <h3>{i.name}</h3>
                     <ul className='genericClassList'>
@@ -59,22 +115,22 @@ const ClassList = props => {
                         <li>Intensity Level: {i.intensity}</li>
                     </ul>
                 </>
-            })}
+            ))}
         </div>
     )
 };
 
 const mapStateToProps = state => {
     return {
-        user: state.user,
-        classes: state.classes,
-        isInstructor: state.user.isInstructor,
+        user: /*state.user,*/ 'George',
+        classes: /*state.classes*/ classes,
         isFetching: state.isFetching,
         error: state.error
     };
 };
 
-export default connect(mapStateToProps, { getClasses })(ClassList);
+// add { getClasses } after mapStateToProps for action call
+export default connect(mapStateToProps)(ClassList);
 
 // Search Function:
 //     - time

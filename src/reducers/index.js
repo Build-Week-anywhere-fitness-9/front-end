@@ -7,30 +7,12 @@ import {
     CLASSES_FAIL
   } from '../actions';
   
-  const initialState = {
+  export const initialState = {
     user: {
         username: '',
         password: '',
     },
-    classes: [
-      {
-        type: 'yoga',
-        maxSize: 10,
-        date: 12212021,
-        time: 2200,
-        duration: 60,
-        intensity: 1,
-        name: 'Yoga with Yani',
-        cost: 25,
-        location: 'USA',
-        participants: [
-          'Carlos',
-          'Darla',
-          'William'
-        ],
-        owner: 'Fred'
-      }
-    ],
+    classes: [],
     error: '',
     isFetching: false
   };

@@ -4,7 +4,7 @@ import './App.css';
 import Login from "./Components/Login";
 import SignUp from "./Components/SignUp";
 import WelcomeScreen from "./Components/WelcomeScreen";
-import ClassList from './components/ClassList';
+import ClassList from './Components/ClassList';
 
 function App() {
   return (

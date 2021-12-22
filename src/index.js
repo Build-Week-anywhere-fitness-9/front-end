@@ -1,14 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
-import { createStore, applyMiddleware } from 'redux';
+// add applyMiddleware import to redux for async calls
+import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import reducer from './reducers';
-import thunk from 'redux-thunk';
+// import thunk from 'redux-thunk';
 import './index.css';
 import App from './App';
 
-const store = createStore(reducer, applyMiddleware(thunk));
+//add applyMiddleware(thunk) as second argument
+const store = createStore(reducer);
 
 ReactDOM.render(
   <Provider store={store}>
