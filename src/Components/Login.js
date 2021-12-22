@@ -54,75 +54,77 @@ function Login() {
   }, [formState]);
 
   return (
-    <Container component="main" maxWidth="xs">
-      <CssBaseline />
-      <Box
-        sx={{
-          marginTop: 8,
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-        }}
-      >
-        <Typography component="h1" variant="h5">
-          Login
-        </Typography>
-        <Box component="form" onSubmit={submitForm} noValidate sx={{ mt: 1 }}>
-          <TextField
-            margin="normal"
-            required
-            fullWidth
-            id="email"
-            label="Email Address"
-            name="email"
-            value={formState.email}
-            autoComplete="email"
-            autoFocus
-            onChange={handleChange}
-            error={!!formErrors.email}
-            helperText={formErrors.email}
-          />
-          <TextField
-            margin="normal"
-            required
-            fullWidth
-            name="password"
-            label="Password"
-            type="password"
-            id="password"
-            value={formState.password}
-            autoComplete="current-password"
-            onChange={handleChange}
-            error={!!formErrors.password}
-            helperText={formErrors.password}
-          />
-          <Link to="/classlist">
-            <Button
-              type="submit"
+    <div className="container">
+      <Container component="main" maxWidth="xs">
+        <CssBaseline />
+        <Box
+          sx={{
+            marginTop: 8,
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+          }}
+        >
+          <Typography component="h1" variant="h5">
+            Login
+          </Typography>
+          <Box component="form" onSubmit={submitForm} noValidate sx={{ mt: 1 }}>
+            <TextField
+              margin="normal"
+              required
               fullWidth
-              variant="contained"
-              sx={{ mt: 3, mb: 2 }}
-              disabled={disabled}
-            >
-              Login
-            </Button>
-          </Link>
+              id="email"
+              label="Email Address"
+              name="email"
+              value={formState.email}
+              autoComplete="email"
+              autoFocus
+              onChange={handleChange}
+              error={!!formErrors.email}
+              helperText={formErrors.email}
+            />
+            <TextField
+              margin="normal"
+              required
+              fullWidth
+              name="password"
+              label="Password"
+              type="password"
+              id="password"
+              value={formState.password}
+              autoComplete="current-password"
+              onChange={handleChange}
+              error={!!formErrors.password}
+              helperText={formErrors.password}
+            />
+            <Link to="/classlist">
+              <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                sx={{ mt: 3, mb: 2 }}
+                disabled={disabled}
+              >
+                Login
+              </Button>
+            </Link>
+          </Box>
         </Box>
-      </Box>
-      <Typography
-        sx={{ mt: 2 }}
-        variant="body2"
-        color="text.secondary"
-        align="center"
-      >
-        {"Copyright © "}
-        <Link color="inherit" href="/">
-          Anywhere Fitness
-        </Link>{" "}
-        {new Date().getFullYear()}
-        {"."}
-      </Typography>
-    </Container>
+        <Typography
+          sx={{ mt: 2 }}
+          variant="body2"
+          color="text.secondary"
+          align="center"
+        >
+          {"Copyright © "}
+          <Link color="inherit" href="/">
+            Anywhere Fitness
+          </Link>{" "}
+          {new Date().getFullYear()}
+          {"."}
+        </Typography>
+      </Container>
+    </div>
   );
 }
 
