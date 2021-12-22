@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import schema from "../validation/signUpSchema";
+import schema from "../Validation/signUpSchema";
 import * as yup from "yup";
 
 import {
