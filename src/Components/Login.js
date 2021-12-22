@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import schema from "../Validation/signUpSchema";
+import schema from "../Validation/loginScheme";
 import * as yup from "yup";
 
 import {
@@ -10,26 +10,23 @@ import {
   TextField,
   CssBaseline,
   Button,
-  FormControlLabel,
-  Checkbox,
 } from "@mui/material";
 
-const initialFormState = {
+const initialForm = {
   email: "",
   password: "",
-  instructor: false,
 };
 
-const initialFormErrors = {
+const initialErrors = {
   email: "",
   password: "",
 };
 
 const initialDisabled = true;
 
-function SignUp() {
-  const [formState, setFormState] = useState(initialFormState);
-  const [formErrors, setFormErrors] = useState(initialFormErrors);
+function Login() {
+  const [formState, setFormState] = useState(initialForm);
+  const [formErrors, setFormErrors] = useState(initialErrors);
   const [disabled, setDisabled] = useState(initialDisabled);
 
   const validate = (name, value) => {
@@ -42,17 +39,14 @@ function SignUp() {
       );
   };
 
-  const handleChange = (e) => {
-    let value = e.target.value;
-
-    if (e.target.name === "instructor") value = e.target.checked;
-
-    validate(e.target.name, value);
-    setFormState({ ...formState, [e.target.name]: value });
+  const handleChange = (evt) => {
+    const { name, value } = evt.target;
+    validate(name, value);
+    setFormState({ ...formState, [name]: value });
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const submitForm = (evt) => {
+    evt.preventDefault();
   };
 
   useEffect(() => {
@@ -60,7 +54,6 @@ function SignUp() {
   }, [formState]);
 
   return (
-    // <StyledFormContainer>
     <Container component="main" maxWidth="xs">
       <CssBaseline />
       <Box
@@ -72,9 +65,9 @@ function SignUp() {
         }}
       >
         <Typography component="h1" variant="h5">
-          Sign Up
+          Login
         </Typography>
-        <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+        <Box component="form" onSubmit={submitForm} noValidate sx={{ mt: 1 }}>
           <TextField
             margin="normal"
             required
@@ -103,28 +96,17 @@ function SignUp() {
             error={!!formErrors.password}
             helperText={formErrors.password}
           />
-
-          <FormControlLabel
-            control={
-              <Checkbox
-                value={formState.instructor}
-                name="instructor"
-                color="primary"
-                onChange={handleChange}
-              />
-            }
-            label="Sign Up as an Instructor"
-          />
-
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            sx={{ mt: 3, mb: 2 }}
-            disabled={disabled}
-          >
-            Sign Up
-          </Button>
+          <Link to="/classlist">
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              sx={{ mt: 3, mb: 2 }}
+              disabled={disabled}
+            >
+              Login
+            </Button>
+          </Link>
         </Box>
       </Box>
       <Typography
@@ -141,8 +123,7 @@ function SignUp() {
         {"."}
       </Typography>
     </Container>
-    // </StyledFormContainer>
   );
 }
 
-export default SignUp;
+export default Login;
