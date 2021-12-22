@@ -6,9 +6,6 @@ import SignUp from "./Components/SignUp";
 import WelcomeScreen from "./Components/WelcomeScreen";
 import ClassList from './Components/ClassList';
 
-import "./App.css";
-import WelcomeScreen from "./Components/WelcomeScreen";
-
 function App() {
   return (
     <div className="App">
@@ -22,12 +19,6 @@ function App() {
           <Link to="/signup">SignUp</Link>
         </nav>
         {/* routes */}
-        <Route path="/login">
-          <Login />
-        </Route>
-        <Route path="/signup">
-          <SignUp />
-        </Route>
       </header>
 
       <Switch>
