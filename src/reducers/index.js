@@ -11,7 +11,6 @@ import {
     user: {
         username: '',
         password: '',
-        isInstructor: false
     },
     classes: [
       {
