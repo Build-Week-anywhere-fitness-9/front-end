@@ -1,26 +1,14 @@
-<<<<<<< HEAD
-import { Routes, Route } from 'react-router-dom';
-import './App.css';
-import WelcomeScreen from './components/WelcomeScreen';
-import ClassList from './components/ClassList';
-=======
-import "./App.css";
 import React from "react";
+import { Link, Route, Switch } from "react-router-dom";
+import './App.css';
 import Login from "./Components/Login";
 import SignUp from "./Components/SignUp";
 import WelcomeScreen from "./Components/WelcomeScreen";
-import { Link, Route, Switch } from "react-router-dom";
->>>>>>> origin/main
+import ClassList from './components/ClassList';
 
 function App() {
   return (
     <div className="App">
-<<<<<<< HEAD
-      <Routes>
-        <Route path='/' element={<WelcomeScreen />} />
-        <Route path='/classlist' element={<ClassList />} />
-      </Routes>
-=======
       {/* header */}
       <header className="App-header">
         <h1>Anywhere Fitness</h1>
@@ -42,8 +30,10 @@ function App() {
         <Route exact path='/'>
           <WelcomeScreen />
         </Route>
+        <Route path='/classlist'>
+          <ClassList />
+        </Route>
       </Switch>
->>>>>>> origin/main
     </div>
   );
 }
