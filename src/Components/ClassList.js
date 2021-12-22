@@ -1,9 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 // import { getClasses } from '../actions';
-import { useHistory } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
 /* dummy data */
+const user = {
+    username: 'George',
+    password: 'Lambda'
+};
+
 const classes = [
     {
       type: 'yoga',
@@ -15,11 +20,7 @@ const classes = [
       name: 'Yoga with Yani',
       cost: 25,
       location: 'San Diego',
-      participants: [
-        'Carlos',
-        'Darla',
-        'William'
-      ],
+      participants: [],
       owner: 'Fred'
     },
     {
@@ -32,7 +33,11 @@ const classes = [
       name: 'Hiya Karate',
       cost: 10,
       location: 'Chicago',
-      participants: [],
+      participants: [
+        'Carlos',
+        'Darla',
+        'William'
+      ],
       owner: 'George'
     },
     {
@@ -54,55 +59,46 @@ const classes = [
     }
   ]
 
-const ClassList = props => {    
-    const push = useHistory();
-
-    const [ participants, setParticipants ] = useState([])
+const ClassList = ({ user, classes, history, isFetching, error }) => {
     const focusClasses = [];
     const otherClasses = [];
-    props.classes.forEach(i => {
-        setParticipants(i.participants);
-        // return (
-            participants.forEach(p => {
-                props.user.username === p || i.owner ? 
-                    focusClasses.push(i) : 
-                    otherClasses.push(i)
-            })
-        // )
+    
+    classes.forEach(oneClass => {
+        if(user.username === oneClass.owner) {focusClasses.push(oneClass)}
+        else if(oneClass.participants.includes(user)) {focusClasses.push(oneClass)}
+        else {otherClasses.push(oneClass)}
     });
 
     return (
         <div className='classList'>
             {focusClasses.map(i => (
-                <>
+                <div className='focusClass'>
                     <h3>{i.name}</h3>
                     <ul className='genericClassList'>
                         <li>Type: {i.type}</li>
-                        <li>Cost: {i.cost}</li>
+                        <li>Cost: ${i.cost}</li>
                         <li>Date: {i.date}</li>
                         <li>Time: {i.time}</li>
                         <li>Location: {i.location}</li>
-                        <li>Max size: {i.maxSize} participants</li>
-                        <li>Duration: {i.duration}</li>
-                        <li>Intensity Level: {i.intensity}</li>
+                        <li>Max particpants: {i.maxSize}</li>
+                        <li>Duration: {i.duration} minutes</li>
+                        <li>Intensity Level: {i.intensity} out of 5</li>
                     </ul>
-                    {props.user.username === i.owner ?
-                        <>
+                    {user.username === i.owner ?
+                        <div className='ownerOptions'>
                             {/* update push to actual edit class file name */}
-                            <button onclick={push('/editClass')}>Edit Class</button>
+                            <button onclick={history.push.bind('/editClass')}>Edit Class</button>
                             <ul className='classParticipants'>
-                                {i.particpants.map(p => (
-                                    <>
-                                        <li>{p}</li>
-                                    </>
+                                {i.participants.map(p => (
+                                    <li>{p}</li>
                                 ))}
                             </ul> 
-                        </> : null
+                        </div> : null
                     }
-                </>
+                </div>
             ))}
             {otherClasses.map(i => (
-                <>
+                <div className='otherClass'>
                     <h3>{i.name}</h3>
                     <ul className='genericClassList'>
                         <li>Type: {i.type}</li>
@@ -114,7 +110,7 @@ const ClassList = props => {
                         <li>Duration: {i.duration}</li>
                         <li>Intensity Level: {i.intensity}</li>
                     </ul>
-                </>
+                </div>
             ))}
         </div>
     )
@@ -122,7 +118,7 @@ const ClassList = props => {
 
 const mapStateToProps = state => {
     return {
-        user: /*state.user,*/ 'George',
+        user: /*state.user,*/ user,
         classes: /*state.classes*/ classes,
         isFetching: state.isFetching,
         error: state.error
@@ -130,7 +126,7 @@ const mapStateToProps = state => {
 };
 
 // add { getClasses } after mapStateToProps for action call
-export default connect(mapStateToProps)(ClassList);
+export default connect(mapStateToProps)(withRouter(ClassList));
 
 // Search Function:
 //     - time

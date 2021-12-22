@@ -53,28 +53,6 @@ const mapStateToProps = state => {
 
         classes: state.classes,
 
-        classType: state.classes.type,
-
-        maxSize: state.classes.maxSize,
-
-        date: state.classes.date,
-
-        time: state.classes.time,
-
-        duration: state.classes.duration,
-
-        intensity: state.classes.intensity,
-
-        nameOfClass: state.classes.name,
-
-        cost: state.classes.cost,
-
-        location: state.classes.location,
-
-        participants: state.classes.participants,
-
-        owner: state.classes.owner,
-
         isFetching: state.isFetching,
 
         error: state.error
