@@ -9,7 +9,7 @@ import {
   
   export const initialState = {
     user: {
-        username: '',
+        username: 'Guest',
         password: '',
     },
     classes: [],
