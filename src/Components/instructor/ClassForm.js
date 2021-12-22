@@ -203,11 +203,7 @@ export default function ClassForm({ reschedule, update }) {
   //   */
   //   }
   // }, []);
-
-  const setWalkedThroughClass = () => {
-    localStorage.setItem("walkedThroughClass", true);
-  };
-
+  
   return (
     <StyledFormContainer className=".classform-page">
     
