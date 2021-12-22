@@ -1,11 +1,13 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function WelcomeScreen() {
   return (
     <div className="WelcomeScreen" data-testid="WelcomeScreen">
-      {/* <h1>Anywhere Fitness</h1> */}
+      <h1>Fitness Made Easy</h1>
       <div className="par1">
         <p>
+          <h3>Fitness Found Anywhere Anyplace</h3>
           These days, fitness classes can be held anywhere- a park, an
           unfinished basement or a garage- not just at a traditional gym.
           Certified fitness instructors need an easy way to take the awkwardness
@@ -22,6 +24,7 @@ function WelcomeScreen() {
           alt="img"
         />
         <p>
+          <h3>Easy Accessibility</h3>
           While you could use several mobile apps to accomplish this,
           **AnywhereFitness** is the all-in-one solution to meet your
           “on-location” fitness class needs. AnywhereFitness makes it painless
@@ -31,6 +34,7 @@ function WelcomeScreen() {
       </div>
       <div className="par3">
         <p>
+          <h3>Find Great Instructors Anywhere</h3>
           Instructors can take attendance, request and process payments, create
           virtual “punch passes” for each type of class offered, alert clients
           of cancellations or location changes and so much more. Clients can
@@ -42,6 +46,15 @@ function WelcomeScreen() {
           src="https://media.istockphoto.com/photos/sporty-people-exercising-in-fitness-gym-picture-id1299585149?b=1&k=20&m=1299585149&s=170667a&w=0&h=CnEd96y6-pe7NnfmZgmT2KfxRSNOtG9dI0mOezRKsPg="
           alt="img"
         />
+      </div>
+      <h2>Join And Become A Part Of A World Wide Family</h2>
+      <div className="ending">
+        <Link to="/signup">Start Your Trial</Link>
+        {/* <img
+          className="end-img"
+          src="https://images.unsplash.com/photo-1571902943202-507ec2618e8f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8Z3ltfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60"
+          alt="img"
+        /> */}
       </div>
     </div>
   );
