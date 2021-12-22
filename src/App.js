@@ -1,8 +1,8 @@
 import "./App.css";
 import React from "react";
-import Login from "./components/Login";
-import SignUp from "./components/SignUp";
-import WelcomeScreen from "./components/WelcomeScreen";
+import Login from "./Components/Login";
+import SignUp from "./Components/SignUp";
+import WelcomeScreen from "./Components/WelcomeScreen";
 import { Link, Route, Switch } from "react-router-dom";
 
 function App() {
