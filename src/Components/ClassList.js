@@ -5,8 +5,8 @@ import { withRouter } from 'react-router-dom';
 
 /* dummy data */
 const user = {
-    email: 'George',
-    password: 'Lambda'
+    email: 'Guest',
+    password: ''
 };
 
 const classes = [
