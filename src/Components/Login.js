@@ -48,7 +48,7 @@ function Login({ history }) {
   const submitForm = (evt) => {
     evt.preventDefault();
     console.log('click', formState)
-    getUser(formState);
+    getUser(formState.email, formState.password);
     history.push('/classList');
   };
 
