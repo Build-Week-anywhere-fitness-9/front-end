@@ -23,6 +23,7 @@ import {
           error: ''
         };
       case USER_SUCCESS:
+          console.log(action.payload);
         return {
           ...state,
           user: action.payload,

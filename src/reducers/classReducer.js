@@ -33,7 +33,7 @@ import {
           cost: 10,
           location: 'Chicago',
           participants: [
-            'Carlos',
+            'test@test.com',
             'Darla',
             'William'
           ],
@@ -54,7 +54,7 @@ import {
             'Roxanne',
             'Cobey'
           ],
-          owner: 'Max'
+          owner: 'test@test.com'
         }
       ],
     error: '',

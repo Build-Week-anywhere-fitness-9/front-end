@@ -16,7 +16,8 @@ export const USER_FAIL = 'USER_FAIL';
 // };
 
 /* Delete this after backend creates api */
-export const getUser = ({ email, password }) => {
+export const getUser = ({ email, password }) => dispatch => {
     localStorage.setItem('token', 'dummyToken');
-    return({type: USER_SUCCESS, payload: {email: email, password: password}});
+    console.log('action', email, password);
+    dispatch({type: USER_SUCCESS, payload: {email: email, password: password}});
 };

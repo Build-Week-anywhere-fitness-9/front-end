@@ -47,6 +47,7 @@ function Login({ history }) {
 
   const submitForm = (evt) => {
     evt.preventDefault();
+    console.log('click', formState)
     getUser(formState);
     history.push('/classList');
   };

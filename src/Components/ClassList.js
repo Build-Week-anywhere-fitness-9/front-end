@@ -7,6 +7,7 @@ const ClassList = ({ user, classes, history }) => {
     const focusClasses = [];
     const otherClasses = [];
     
+    console.log('user', user);
     classes.forEach(oneClass => {
         if(user === oneClass.owner) {focusClasses.push(oneClass)}
         else if(oneClass.participants.includes(user)) {focusClasses.push(oneClass)}
@@ -35,7 +36,13 @@ const ClassList = ({ user, classes, history }) => {
 
     return (
         <div className='classList'>
+            <div className='beAnInstructor'>
+                <h3>Be an instructor!</h3>
+                <button onClick={history.push.bind('/newClass')} className='createClass'>Create a Class</button>
+            </div>
+            <hr/><br/>
             {/* List all classes that client has connections to (owner or particpant) */}
+            <h1>Class List</h1>
             {focusClasses.map(i => (
                 <div className='focusClass'>
                     <h3>{i.name}</h3>
@@ -90,7 +97,7 @@ const ClassList = ({ user, classes, history }) => {
 
 const mapStateToProps = state => {
     return {
-        user: state.userInfo.user,
+        user: state.userInfo.user.email,
         classes: state.classList.classes,
     };
 };
