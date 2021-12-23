@@ -1,13 +1,10 @@
 import React, { useState, useEffect } from "react";
-
 import styled from "styled-components";
-
 import { useNavigate } from "react-router-dom";
 
 import { format } from "date-fns";
 
 import schema from "../../validation/formSchema.js";
-
 import * as yup from "yup";
 
 import {
@@ -21,19 +18,17 @@ import {
 } from "@mui/material";
 
 import { LocalizationProvider, DatePicker, TimePicker } from "@mui/lab";
-
 import AdapterDateFns from "@mui/lab/AdapterDateFns";
-
 
 const classTypes = [
   {
-    type: "Yoga",
+    type: "Cardio",
   },
   {
-    type: "Insanity",
+    type: "Crossfit",
   },
   {
-    type: "RIPPED",
+    type: "Weight training",
   },
   {
     type: "Pilates",
@@ -43,6 +38,9 @@ const classTypes = [
   },
   {
     type: "Karate",
+  },
+  {
+    type: "Yoga",
   },
 ];
 const durations = [
@@ -245,6 +243,7 @@ export default function ClassForm({ reschedule, update }) {
                 : "Please select your class type"
             }
           >
+            {/* Mapping through our pre-set dropdown menu objects/arrays */}
             {classTypes.map((option) => (
               <MenuItem key={option.type} value={option.type}>
                 {option.type}
@@ -267,7 +266,6 @@ export default function ClassForm({ reschedule, update }) {
             />
           </LocalizationProvider>
           <br></br>
-
           <LocalizationProvider dateAdapter={AdapterDateFns}>
             <DatePicker
               label="Pick a Date"
