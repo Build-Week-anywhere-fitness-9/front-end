@@ -1,5 +1,6 @@
 import React from "react";
 import { Link, Route, Switch } from "react-router-dom";
+import { connect } from 'react-redux';
 import './App.css';
 import PrivateRoute from "./Components/PrivateRoute";
 import Login from "./Components/Login";
@@ -7,8 +8,10 @@ import SignUp from "./Components/SignUp";
 import WelcomeScreen from "./Components/WelcomeScreen";
 import ClassList from './Components/ClassList';
 import CreateClass from './Components/CreateClass';
+import ErrorScreen from './Components/Error';
+import LoadingScreen from './Components/Loading';
 
-function App() {
+function App({error, isFetching}) {
   return (
     <div className="App">
       {/* header */}
@@ -24,6 +27,16 @@ function App() {
       </header>
 
       <Switch>
+        {error !== '' &&
+          <Route path='/error'>
+            <ErrorScreen />
+          </Route>
+        }
+        {isFetching === true &&
+          <Route path='/loading'>
+            <LoadingScreen />
+          </Route>
+        }
         <Route exact path='/'>
           <WelcomeScreen />
         </Route>
@@ -40,6 +53,13 @@ function App() {
       </Switch>
     </div>
   );
+};
+
+const mapStateToProps = state => {
+  return {
+    error: state.error,
+    isFetching: state.isFetching
+  }
 }
 
-export default App;
+export default connect(mapStateToProps)(App);

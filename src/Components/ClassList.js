@@ -1,65 +1,9 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-// import { getClasses } from '../actions';
+import { getClasses, removeClass } from '../actions/ClassActions';
 import { withRouter } from 'react-router-dom';
 
-/* dummy data */
-const user = {
-    email: 'Guest',
-    password: ''
-};
-
-const classes = [
-    {
-      type: 'yoga',
-      maxSize: 10,
-      date: 12212021,
-      time: 2200,
-      duration: 60,
-      intensity: 1,
-      name: 'Yoga with Yani',
-      cost: 25,
-      location: 'San Diego',
-      participants: [],
-      owner: 'Fred'
-    },
-    {
-      type: 'karate',
-      maxSize: 10,
-      date: 12212021,
-      time: 2200,
-      duration: 60,
-      intensity: 1,
-      name: 'Hiya Karate',
-      cost: 10,
-      location: 'Chicago',
-      participants: [
-        'Carlos',
-        'Darla',
-        'William'
-      ],
-      owner: 'George'
-    },
-    {
-      type: 'Pilates',
-      maxSize: 10,
-      date: 12222021,
-      time: 2000,
-      duration: 30,
-      intensity: 3,
-      name: 'Platform Pilates',
-      cost: 15,
-      location: 'New York',
-      participants: [
-        'Max',
-        'Roxanne',
-        'Cobey'
-      ],
-      owner: 'Max'
-    }
-  ]
-
-const ClassList = ({ user, classes, history, isFetching, error }) => {
+const ClassList = ({ user, classes, history }) => {
     const focusClasses = [];
     const otherClasses = [];
     
@@ -91,6 +35,7 @@ const ClassList = ({ user, classes, history, isFetching, error }) => {
 
     return (
         <div className='classList'>
+            {/* List all classes that client has connections to (owner or particpant) */}
             {focusClasses.map(i => (
                 <div className='focusClass'>
                     <h3>{i.name}</h3>
@@ -105,23 +50,24 @@ const ClassList = ({ user, classes, history, isFetching, error }) => {
                         <li>Intensity Level: {i.intensity} out of 5</li>
                     </ul>
                     {user === i.owner ?
-                        /* owner options */
+                        /* owner options: edit/delete class & view participants */
                         <div className='ownerOptions'>
-                            {/* update push to actual edit class file name */}
-                            <button onClick={history.push.bind('/editClass')} className='editClass'>Edit Class</button>
+                            <button onClick={history.push.bind('/newClass')} className='editClass'>Edit Class</button>
+                            <button onClick={removeClass} className='cancel'>Cancel Class</button>
                             <ul className='classParticipants'>
                                 {i.participants.map(p => (
                                     <li>{p}</li>
                                 ))}
                             </ul> 
                         </div> : 
-                        /* client options */
+                        /* particpant options: withdraw attendance */
                         <div className='clientOptions'>
                             <button onClick={handleClick} name={i.name} className='reservation'>Withdraw</button>
                         </div>
                     }
                 </div>
             ))}
+            {/* List of classes that client is not currently connected to */}
             {otherClasses.map(i => (
             <div className='otherClass'>
                 <h3>{i.name}</h3>
@@ -144,20 +90,9 @@ const ClassList = ({ user, classes, history, isFetching, error }) => {
 
 const mapStateToProps = state => {
     return {
-        user: /*state.user,*/ user.email,
-        classes: /*state.classes*/ classes,
-        isFetching: state.isFetching,
-        error: state.error
+        user: state.userInfo.user,
+        classes: state.classList.classes,
     };
 };
 
-// add { getClasses } after mapStateToProps for action call
-export default connect(mapStateToProps)(withRouter(ClassList));
-
-// Search Function:
-//     - time
-//     - date
-//     - duration
-//     - type
-//     - intensity
-//     - location
+export default connect(mapStateToProps, { getClasses })(withRouter(ClassList));

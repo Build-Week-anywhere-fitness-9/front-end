@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
+import { getUser } from "../actions/UserActions";
 import schema from "../Validation/loginScheme";
 import * as yup from "yup";
+import { withRouter } from 'react-router-dom';
 
 import {
   Container,
@@ -9,7 +11,7 @@ import {
   Link,
   TextField,
   CssBaseline,
-  Button,
+  Button
 } from "@mui/material";
 
 const initialForm = {
@@ -22,12 +24,10 @@ const initialErrors = {
   password: "",
 };
 
-const initialDisabled = true;
-
-function Login() {
+function Login({ history }) {
   const [formState, setFormState] = useState(initialForm);
   const [formErrors, setFormErrors] = useState(initialErrors);
-  const [disabled, setDisabled] = useState(initialDisabled);
+  const [disabled, setDisabled] = useState(true);
 
   const validate = (name, value) => {
     yup
@@ -47,6 +47,8 @@ function Login() {
 
   const submitForm = (evt) => {
     evt.preventDefault();
+    getUser(formState);
+    history.push('/classList');
   };
 
   useEffect(() => {
@@ -128,4 +130,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default withRouter(Login);

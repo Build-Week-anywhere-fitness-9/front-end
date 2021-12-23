@@ -1,8 +1,10 @@
 import {
     CLASSES_LOADING,
     CLASSES_SUCCESS,
-    CLASSES_FAIL
-  } from '../actions';
+    CLASSES_FAIL,
+    NEW_CLASS,
+    REMOVE_CLASS  /* remove this when connected to backend */
+  } from '../actions/ClassActions';
   
   // remove dummy data once connected to back end
   export const initialState = {
@@ -81,6 +83,20 @@ import {
           error: action.payload.message,
           isFetching: false
         };
+      case NEW_CLASS:
+        return {
+          ...state,
+          classes: [...state.classes, action.payload],
+          isFetching: false,
+          error: ''
+        };
+
+      /* remove this when connected to backend */
+      case REMOVE_CLASS:
+        return{
+          ...state,
+          classes: [state.classes.filter(id => id !== action.payload)]
+        }
       
       /* load default */
       default:

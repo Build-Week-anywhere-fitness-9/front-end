@@ -2,7 +2,7 @@ import {
     USER_LOADING,
     USER_SUCCESS,
     USER_FAIL
-  } from '../actions';
+  } from '../actions/UserActions';
   
   export const initialState = {
     user: {
