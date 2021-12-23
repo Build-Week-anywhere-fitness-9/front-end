@@ -4,7 +4,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 // add applyMiddleware import to redux for async calls
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
-import rootReducer from './reducers';
+import rootReducer from './rootReducer';
 // import thunk from 'redux-thunk';
 import './index.css';
 import App from './App';

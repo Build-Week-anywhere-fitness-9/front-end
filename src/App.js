@@ -7,7 +7,7 @@ import Login from "./Components/Login";
 import SignUp from "./Components/SignUp";
 import WelcomeScreen from "./Components/WelcomeScreen";
 import ClassList from './Components/ClassList';
-import CreateClass from './Components/CreateClass';
+import ClassForm from './Components/ClassForm';
 import ErrorScreen from './Components/Error';
 import LoadingScreen from './Components/Loading';
 
@@ -23,7 +23,7 @@ function App({error, isFetching}) {
           <Link to="/login">Login</Link>
           <Link to="/signup">SignUp</Link>
         </nav>
-        {/* routes */}
+
       </header>
 
       <Switch>
@@ -46,10 +46,10 @@ function App({error, isFetching}) {
         <Route path="/signup">
           <SignUp />
         </Route>
-        <Route path='/classlist'>
+        <Route path="/classlist">
           <ClassList />
         </Route>
-        <PrivateRoute path='/newClass' element={<CreateClass />} />
+        <PrivateRoute path='/newClass' element={<ClassForm />} />
       </Switch>
     </div>
   );
