@@ -76,13 +76,17 @@ const ClassList = ({ user, classes, history, isFetching, error }) => {
             for (var i = 0; i < arr.length; i++) {
                 if(arr[i] === user ) {
                     target.participants.splice(i, 1);
-                }
-            }
+                };
+            };
+            history.push('/classlist');
+        }
+        else if(user === 'Guest') {
+            history.push('/login');
         }
         else {
             target.participants.push(user);
+            history.push('/classlist');
         };
-        history.push('/classlist');
     };
 
     return (
