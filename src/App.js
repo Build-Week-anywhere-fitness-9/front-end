@@ -4,9 +4,9 @@ import "./App.css";
 import Login from "./Components/Login";
 import SignUp from "./Components/SignUp";
 import WelcomeScreen from "./Components/WelcomeScreen";
-
+import PrivateRoute from "./Components/PrivateRoute";
 import ClassList from "./Components/ClassList";
-
+import ClassForm from './Components/ClassForm';
 
 function App() {
   return (
@@ -36,6 +36,7 @@ function App() {
         <Route path="/classlist">
           <ClassList />
         </Route>
+        <PrivateRoute path='/newClass' element={<ClassForm />} />
       </Switch>
     </div>
   );

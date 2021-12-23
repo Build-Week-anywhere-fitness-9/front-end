@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import { useNavigate } from "react-router-dom";
-
+import { useHistory } from "react-router-dom";
 import { format } from "date-fns";
-
-import schema from "../../validation/formSchema.js";
+import schema from "../validation/formSchema.js";
 import * as yup from "yup";
 
 import {
@@ -139,7 +137,7 @@ export default function ClassForm({ reschedule, update }) {
   const [formErrors, setFormErrors] = useState(initialFormErrors);
   const [disabled, setDisabled] = useState(initialDisabled);
 
-  const navigate = useNavigate();
+  const push = useHistory();
 
   const handleChange = (event, name) => {
     if (name === "startTime" || name === "classDate") {
@@ -171,7 +169,7 @@ export default function ClassForm({ reschedule, update }) {
       /**
         axiosWithAuth().post(`url`, formattedClass).then(res => {
           setClasses(res.data)
-          navigate("/instructor")
+          push("/instructor")
         })
         */
     }
@@ -180,7 +178,7 @@ export default function ClassForm({ reschedule, update }) {
       /**
          axiosWithAuth().patch(`url` formattedClass).then(res => {
            setClasses(res.data)
-           navigate("/instructor")
+           push("/instructor")
      }).catch(err => {})
      */
     }
@@ -371,7 +369,7 @@ export default function ClassForm({ reschedule, update }) {
               sx={{ mt: 3, mb: 2 }}
               color="error"
               onClick={() => {
-                navigate("/instructor");
+                push("/instructor");
               }}
             >
               Cancel
