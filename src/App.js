@@ -1,10 +1,12 @@
 import React from "react";
 import { Link, Route, Switch } from "react-router-dom";
 import './App.css';
+import PrivateRoute from "./Components/PrivateRoute";
 import Login from "./Components/Login";
 import SignUp from "./Components/SignUp";
 import WelcomeScreen from "./Components/WelcomeScreen";
 import ClassList from './Components/ClassList';
+import CreateClass from './Components/CreateClass';
 
 function App() {
   return (
@@ -34,6 +36,7 @@ function App() {
         <Route path='/classlist'>
           <ClassList />
         </Route>
+        <PrivateRoute path='/newClass' element={<CreateClass />} />
       </Switch>
     </div>
   );

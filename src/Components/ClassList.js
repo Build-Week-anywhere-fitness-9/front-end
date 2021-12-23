@@ -5,7 +5,7 @@ import { withRouter } from 'react-router-dom';
 
 /* dummy data */
 const user = {
-    username: 'George',
+    email: 'George',
     password: 'Lambda'
 };
 
@@ -140,7 +140,7 @@ const ClassList = ({ user, classes, history, isFetching, error }) => {
 
 const mapStateToProps = state => {
     return {
-        user: /*state.user,*/ user.username,
+        user: /*state.user,*/ user.email,
         classes: /*state.classes*/ classes,
         isFetching: state.isFetching,
         error: state.error
