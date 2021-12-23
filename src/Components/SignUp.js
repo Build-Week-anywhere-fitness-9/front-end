@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
+import { connect } from 'react-redux';
 import schema from "../Validation/signUpSchema";
 import * as yup from "yup";
+import { newUser } from '../actions/UserActions';
+import { useHistory } from "react-router-dom";
 
 import {
   Container,
@@ -16,8 +19,7 @@ import {
 
 const initialFormState = {
   email: "",
-  password: "",
-  instructor: false,
+  password: ""
 };
 
 const initialFormErrors = {
@@ -27,7 +29,7 @@ const initialFormErrors = {
 
 const initialDisabled = true;
 
-function SignUp() {
+function SignUp({ newUser }) {
   const [formState, setFormState] = useState(initialFormState);
   const [formErrors, setFormErrors] = useState(initialFormErrors);
   const [disabled, setDisabled] = useState(initialDisabled);
@@ -51,8 +53,12 @@ function SignUp() {
     setFormState({ ...formState, [e.target.name]: value });
   };
 
+  const push = useHistory();
   const handleSubmit = (e) => {
     e.preventDefault();
+    newUser(formState.email, formState.password);
+    // push('/onboarding');
+    push('/classlist');
   };
 
   useEffect(() => {
@@ -60,7 +66,6 @@ function SignUp() {
   }, [formState]);
 
   return (
-    // <StyledFormContainer>
     <Container component="main" maxWidth="xs">
       <CssBaseline />
       <Box
@@ -104,18 +109,6 @@ function SignUp() {
             helperText={formErrors.password}
           />
 
-          <FormControlLabel
-            control={
-              <Checkbox
-                value={formState.instructor}
-                name="instructor"
-                color="primary"
-                onChange={handleChange}
-              />
-            }
-            label="Sign Up as an Instructor"
-          />
-
           <Button
             type="submit"
             fullWidth
@@ -141,8 +134,7 @@ function SignUp() {
         {"."}
       </Typography>
     </Container>
-    // </StyledFormContainer>
   );
 }
 
-export default SignUp;
+export default connect(null, { newUser })(SignUp);
