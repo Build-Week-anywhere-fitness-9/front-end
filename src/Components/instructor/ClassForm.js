@@ -266,7 +266,6 @@ export default function ClassForm({ reschedule, update }) {
             />
           </LocalizationProvider>
           <br></br>
- 
           <LocalizationProvider dateAdapter={AdapterDateFns}>
             <DatePicker
               label="Pick a Date"

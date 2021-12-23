@@ -1,10 +1,12 @@
 import React from "react";
 import { Link, Route, Switch } from "react-router-dom";
-import './App.css';
+import "./App.css";
 import Login from "./Components/Login";
 import SignUp from "./Components/SignUp";
 import WelcomeScreen from "./Components/WelcomeScreen";
-import ClassList from './Components/ClassList';
+
+import ClassList from "./Components/ClassList";
+
 
 function App() {
   return (
@@ -18,11 +20,11 @@ function App() {
           <Link to="/login">Login</Link>
           <Link to="/signup">SignUp</Link>
         </nav>
-        {/* routes */}
+
       </header>
 
       <Switch>
-        <Route exact path='/'>
+        <Route exact path="/">
           <WelcomeScreen />
         </Route>
         <Route path="/login">
@@ -31,7 +33,7 @@ function App() {
         <Route path="/signup">
           <SignUp />
         </Route>
-        <Route path='/classlist'>
+        <Route path="/classlist">
           <ClassList />
         </Route>
       </Switch>
