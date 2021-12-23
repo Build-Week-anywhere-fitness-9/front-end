@@ -5,12 +5,9 @@ import {
   } from '../actions/UserActions';
   
   export const initialState = {
-    user: {
-        email: 'Guest',
-        password: '',
-    },
+    user: 'Guest',
     error: '',
-    isFetching: false
+    isFetching: false,
   };
   
   export default function userReducer (state = initialState, action) {
@@ -23,7 +20,7 @@ import {
           error: ''
         };
       case USER_SUCCESS:
-          console.log(action.payload);
+        console.log(action.payload)
         return {
           ...state,
           user: action.payload,
@@ -36,7 +33,6 @@ import {
           error: action.payload.message,
           isFetching: false
         };
-
       /* load default */
       default:
         return state;
