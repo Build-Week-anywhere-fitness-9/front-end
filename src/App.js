@@ -19,6 +19,7 @@ function App() {
           <Link to="/">About</Link>
           <Link to="/login">Login</Link>
           <Link to="/signup">SignUp</Link>
+
           {/* <Link to="/classlist">
             {" "}
             <SearchBar />

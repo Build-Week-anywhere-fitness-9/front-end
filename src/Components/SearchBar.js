@@ -42,6 +42,11 @@ const classes = [
     owner: "Max",
   },
 ];
+// $(document).ready(function () {
+//   $(".dropdown").click(function () {
+//     $(".dropdown-list ul").toggleClass("active");
+//   });
+// });
 
 function SearchBar(props) {
   const { handleClick } = props;
@@ -50,9 +55,25 @@ function SearchBar(props) {
     <div className="searchBar">
       <div className="search-input">
         <div className="dropdown">
-          <div className="default-option">Category</div>
+          <div className="default-option">
+            {" "}
+            <label>
+              {" "}
+              <select className="test">
+                <option value="1">name</option>
+                <option value="1">type</option>
+                <option value="1">cost</option>
+                <option value="1">date</option>
+                <option value="1">time</option>
+                <option value="1">location</option>
+                <option value="1">maxSize</option>
+                <option value="1">duration</option>
+                <option value="1">intensity</option>
+              </select>
+            </label>
+          </div>
           <div className="dropdown-list">
-            <ul>
+            {/* <ul>
               <li>name</li>
               <li>Type</li>
               <li>cost</li>
@@ -62,7 +83,7 @@ function SearchBar(props) {
               <li>maxSize</li>
               <li>duration</li>
               <li>intensity</li>
-            </ul>
+            </ul> */}
           </div>
         </div>
         <div className="search">
@@ -81,7 +102,7 @@ function SearchBar(props) {
         .filter((i) => {
           if (query === "") {
             return "";
-          } else if (i.time.toLowerCase().includes(query.toLowerCase())) {
+          } else if (i.name.toLowerCase().includes(query.toLowerCase())) {
             return i;
           }
         })
