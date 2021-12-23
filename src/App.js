@@ -5,6 +5,7 @@ import Login from "./Components/Login";
 import SignUp from "./Components/SignUp";
 import WelcomeScreen from "./Components/WelcomeScreen";
 import ClassList from "./Components/ClassList";
+import SearchBar from "./Components/SearchBar";
 
 function App() {
   return (
@@ -14,9 +15,14 @@ function App() {
         <h1>Anywhere Fitness</h1>
         {/* nav links */}
         <nav>
+          <SearchBar />
           <Link to="/">About</Link>
           <Link to="/login">Login</Link>
           <Link to="/signup">SignUp</Link>
+          {/* <Link to="/classlist">
+            {" "}
+            <SearchBar />
+          </Link> */}
         </nav>
       </header>
 

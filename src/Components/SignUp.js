@@ -104,7 +104,7 @@ function SignUp() {
             helperText={formErrors.password}
           />
 
-          <FormControlLabel
+          {/* <FormControlLabel
             control={
               <Checkbox
                 value={formState.instructor}
@@ -114,7 +114,7 @@ function SignUp() {
               />
             }
             label="Sign Up as an Instructor"
-          />
+          /> */}
 
           <Button
             type="submit"
