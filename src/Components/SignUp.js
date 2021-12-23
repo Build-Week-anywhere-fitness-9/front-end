@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import schema from "../validation/signUpSchema";
+import schema from "../Validation/signUpSchema";
 import * as yup from "yup";
 
 import {
@@ -60,93 +60,88 @@ function SignUp() {
   }, [formState]);
 
   return (
-    <StyledFormContainer>
-      <Container component="main" maxWidth="xs">
-        <CssBaseline />
-        <Box
-          sx={{
-            marginTop: 8,
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-          }}
-        >
-          <Typography component="h1" variant="h5">
-            Sign Up
-          </Typography>
-          <Box
-            component="form"
-            onSubmit={handleSubmit}
-            noValidate
-            sx={{ mt: 1 }}
-          >
-            <TextField
-              margin="normal"
-              required
-              fullWidth
-              id="email"
-              label="Email Address"
-              name="email"
-              value={formState.email}
-              autoComplete="email"
-              autoFocus
-              onChange={handleChange}
-              error={!!formErrors.email}
-              helperText={formErrors.email}
-            />
-            <TextField
-              margin="normal"
-              required
-              fullWidth
-              name="password"
-              label="Password"
-              type="password"
-              id="password"
-              value={formState.password}
-              autoComplete="current-password"
-              onChange={handleChange}
-              error={!!formErrors.password}
-              helperText={formErrors.password}
-            />
-
-            <FormControlLabel
-              control={
-                <Checkbox
-                  value={formState.instructor}
-                  name="instructor"
-                  color="primary"
-                  onChange={handleChange}
-                />
-              }
-              label="Sign Up as an Instructor"
-            />
-
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              sx={{ mt: 3, mb: 2 }}
-              disabled={disabled}
-            >
-              Sign Up
-            </Button>
-          </Box>
-        </Box>
-        <Typography
-          sx={{ mt: 2 }}
-          variant="body2"
-          color="text.secondary"
-          align="center"
-        >
-          {"Copyright © "}
-          <Link color="inherit" href="/">
-            Anywhere Fitness
-          </Link>{" "}
-          {new Date().getFullYear()}
-          {"."}
+    // <StyledFormContainer>
+    <Container component="main" maxWidth="xs">
+      <CssBaseline />
+      <Box
+        sx={{
+          marginTop: 8,
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
+      >
+        <Typography component="h1" variant="h5">
+          Sign Up
         </Typography>
-      </Container>
-    </StyledFormContainer>
+        <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+          <TextField
+            margin="normal"
+            required
+            fullWidth
+            id="email"
+            label="Email Address"
+            name="email"
+            value={formState.email}
+            autoComplete="email"
+            autoFocus
+            onChange={handleChange}
+            error={!!formErrors.email}
+            helperText={formErrors.email}
+          />
+          <TextField
+            margin="normal"
+            required
+            fullWidth
+            name="password"
+            label="Password"
+            type="password"
+            id="password"
+            value={formState.password}
+            autoComplete="current-password"
+            onChange={handleChange}
+            error={!!formErrors.password}
+            helperText={formErrors.password}
+          />
+
+          <FormControlLabel
+            control={
+              <Checkbox
+                value={formState.instructor}
+                name="instructor"
+                color="primary"
+                onChange={handleChange}
+              />
+            }
+            label="Sign Up as an Instructor"
+          />
+
+          <Button
+            type="submit"
+            fullWidth
+            variant="contained"
+            sx={{ mt: 3, mb: 2 }}
+            disabled={disabled}
+          >
+            Sign Up
+          </Button>
+        </Box>
+      </Box>
+      <Typography
+        sx={{ mt: 2 }}
+        variant="body2"
+        color="text.secondary"
+        align="center"
+      >
+        {"Copyright © "}
+        <Link color="inherit" href="/">
+          Anywhere Fitness
+        </Link>{" "}
+        {new Date().getFullYear()}
+        {"."}
+      </Typography>
+    </Container>
+    // </StyledFormContainer>
   );
 }
 
