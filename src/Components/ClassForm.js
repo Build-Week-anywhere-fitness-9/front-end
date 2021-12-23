@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { useHistory } from "react-router-dom";
 import { format } from "date-fns";
-import schema from "../validation/formSchema.js";
+import schema from "../Validation/formSchema.js";
 import * as yup from "yup";
 
 import {
