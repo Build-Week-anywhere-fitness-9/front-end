@@ -56,7 +56,7 @@ function WelcomeScreen() {
       </div>
       <h2>Join And Become A Part Of A World Wide Family</h2>
       <div className="ending">
-        <Link to="/signup">Start Your Trial</Link>
+        <Link to="/classlist">View Classes</Link>
       </div>
     </div>
   );

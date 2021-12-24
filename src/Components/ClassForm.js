@@ -4,7 +4,8 @@ import { useHistory } from "react-router-dom";
 import { format } from "date-fns";
 import schema from "../Validation/formSchema.js";
 import * as yup from "yup";
-
+import { LocalizationProvider, DatePicker, TimePicker } from "@mui/lab";
+import AdapterDateFns from "@mui/lab/AdapterDateFns";
 import {
   Container,
   Box,
@@ -15,32 +16,17 @@ import {
   Button,
 } from "@mui/material";
 
-import { LocalizationProvider, DatePicker, TimePicker } from "@mui/lab";
-import AdapterDateFns from "@mui/lab/AdapterDateFns";
 
-const classTypes = [
-  {
-    type: "Cardio",
-  },
-  {
-    type: "Crossfit",
-  },
-  {
-    type: "Weight training",
-  },
-  {
-    type: "Pilates",
-  },
-  {
-    type: "Aerobic",
-  },
-  {
-    type: "Karate",
-  },
-  {
-    type: "Yoga",
-  },
+const types = [ 
+  "Cardio", 
+  "Crossfit", 
+  "Weight training", 
+  "Pilates", 
+  "Aerobic", 
+  "Karate", 
+  "Yoga" 
 ];
+
 const durations = [
   "0:15",
   "0:30",
@@ -76,61 +62,30 @@ const intensitySliderMarks = [
 ];
 
 const initialFormState = {
-  className: "",
-  startTime: "",
-  classDate: "",
-  classType: "",
-  duration: "",
-  intensity: 1,
-  location: "",
-  maxCapacity: "",
-};
+    type: '',
+    maxSize: '',
+    date: '',
+    time: '',
+    duration: '',
+    intensity: 1,
+    name: '',
+    cost: '',
+    location: '',
+    owner: 'Fred'
+  };
 
 const initialFormErrors = {
-  className: "",
-  startTime: "",
-  classDate: "",
-  classType: "",
+  name: "",
+  time: "",
+  date: "",
+  type: "",
   duration: "",
   intensity: "",
   location: "",
-  maxCapacity: "",
+  maxSize: "",
 };
 
 const initialDisabled = true;
-
-const StyledFormContainer = styled.main`
-  margin-top: 2rem;
-  form {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-  .MuiContainer-root {
-    background-color: white;
-    border-radius: 0.5rem;
-  }
-  .MuiBox-root {
-    padding: 2.5rem;
-  }
-  .MuiTextField-root,
-  .MuiSlider-root {
-    margin: 1rem 1rem;
-  }
-  span.MuiTypography-p {
-    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-    font-weight: 400;
-    line-height: 1.66;
-    letter-spacing: 0.03333em;
-  }
-  @media (min-width: 500px) {
-    div.buttons {
-      display: flex;
-      width: 100%;
-      justify-content: space-evenly;
-    }
-  }
-`;
 
 export default function ClassForm({ reschedule, update }) {
   const [formState, setFormState] = useState(initialFormState);
@@ -140,7 +95,7 @@ export default function ClassForm({ reschedule, update }) {
   const push = useHistory();
 
   const handleChange = (event, name) => {
-    if (name === "startTime" || name === "classDate") {
+    if (name === "time" || name === "date") {
       setFormState({ ...formState, [name]: event });
     } else {
       validate(event.target.name, event.target.value);
@@ -162,8 +117,8 @@ export default function ClassForm({ reschedule, update }) {
     e.preventDefault();
 
     const formattedClass = { ...formState };
-    formattedClass.startTime = format(formattedClass.startTime, "h:m aaa");
-    formattedClass.classDate = format(formattedClass.classDate, "PPP");
+    formattedClass.time = format(formattedClass.time, "h:m aaa");
+    formattedClass.date = format(formattedClass.date, "PPP");
 
     if (!update && !reschedule) {
       /**
@@ -218,31 +173,31 @@ export default function ClassForm({ reschedule, update }) {
             id="class-name-input"
             label="Class Name"
             variant="outlined"
-            name="className"
+            name="name"
             disabled={reschedule}
-            value={formState.className}
+            value={formState.name}
             onChange={handleChange}
-            error={!!formErrors.className}
-            helperText={formErrors.className}
+            error={!!formErrors.name}
+            helperText={formErrors.name}
           />
 
           <TextField
             id="class-type-input"
             select
             label="Class Type"
-            name="classType"
+            name="type"
             disabled={reschedule}
-            value={formState.classType}
+            value={formState.type}
             onChange={handleChange}
-            error={!!formErrors.classType}
+            error={!!formErrors.type}
             helperText={
-              formErrors.classType
-                ? formErrors.classType
+              formErrors.type
+                ? formErrors.type
                 : "Please select your class type"
             }
           >
             {/* Mapping through our pre-set dropdown menu objects/arrays */}
-            {classTypes.map((option) => (
+            {types.map((option) => (
               <MenuItem key={option.type} value={option.type}>
                 {option.type}
               </MenuItem>
@@ -253,13 +208,13 @@ export default function ClassForm({ reschedule, update }) {
             <TimePicker
               label="Start Time"
               id="start-time-input"
-              value={formState.startTime}
+              value={formState.time}
               onChange={(event) => {
-                handleChange(event, "startTime");
+                handleChange(event, "time");
               }}
               variant="outlined"
-              error={!!formErrors.startTime}
-              helperText={formErrors.startTime ? formErrors.startTime : null}
+              error={!!formErrors.time}
+              helperText={formErrors.time ? formErrors.time : null}
               renderInput={(params) => <TextField {...params} />}
             />
           </LocalizationProvider>
@@ -267,16 +222,16 @@ export default function ClassForm({ reschedule, update }) {
           <LocalizationProvider dateAdapter={AdapterDateFns}>
             <DatePicker
               label="Pick a Date"
-              value={formState.classDate}
+              value={formState.date}
               className="MuiDatePicker"
               minDate={new Date()}
               onChange={(event) => {
-                handleChange(event, "classDate");
+                handleChange(event, "date");
               }}
-              error={!!formErrors.classDate}
+              error={!!formErrors.date}
               helperText={
-                formErrors.classDate
-                  ? formErrors.classDate
+                formErrors.date
+                  ? formErrors.date
                   : "Must be scheduled 5 days in advance."
               }
               renderInput={(params) => <TextField {...params} />}
@@ -341,12 +296,12 @@ export default function ClassForm({ reschedule, update }) {
             label="Max Capacity"
             variant="outlined"
             type="number"
-            name="maxCapacity"
+            name="maxSize"
             disabled={reschedule}
-            value={formState.maxCapacity}
+            value={formState.maxSize}
             onChange={handleChange}
-            error={!!formErrors.maxCapacity}
-            helperText={formErrors.maxCapacity}
+            error={!!formErrors.maxSize}
+            helperText={formErrors.maxSize}
           />
 
           <div className="buttons">
@@ -380,3 +335,37 @@ export default function ClassForm({ reschedule, update }) {
     </StyledFormContainer>
   );
 }
+
+// styles
+const StyledFormContainer = styled.main`
+  margin-top: 2rem;
+  form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .MuiContainer-root {
+    background-color: white;
+    border-radius: 0.5rem;
+  }
+  .MuiBox-root {
+    padding: 2.5rem;
+  }
+  .MuiTextField-root,
+  .MuiSlider-root {
+    margin: 1rem 1rem;
+  }
+  span.MuiTypography-p {
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    font-weight: 400;
+    line-height: 1.66;
+    letter-spacing: 0.03333em;
+  }
+  @media (min-width: 500px) {
+    div.buttons {
+      display: flex;
+      width: 100%;
+      justify-content: space-evenly;
+    }
+  }
+`;

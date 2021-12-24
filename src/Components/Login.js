@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { connect } from 'react-redux';
 import { getUser } from "../actions/UserActions";
 import schema from "../Validation/loginScheme";
 import * as yup from "yup";
@@ -14,6 +15,30 @@ import {
   Button
 } from "@mui/material";
 
+var firebase = require('firebase');
+var firebaseui = require('firebaseui');
+var ui = new firebaseui.auth.AuthUI(firebase.auth());
+
+ui.start('#firebaseui-auth-container', {
+  signInOptions: [
+    {
+      provider: firebase.auth.EmailAuthProvider.PROVIDER_ID,
+      requireDisplayName: false,
+      signInMethod: firebase.auth.EmailAuthProvider.EMAIL_LINK_SIGN_IN_METHOD
+    }
+  ],
+  callbacks: {
+    signInSuccessWithAuthResult: function(authResult, redirectUrl) {
+      // User successfully signed in.
+      // Return type determines whether we continue the redirect automatically
+      // or whether we leave that to developer to handle.
+      return true;
+    }
+  },
+  signInSuccessUrl: '/classlist'
+});
+
+
 const initialForm = {
   email: "",
   password: "",
@@ -24,7 +49,7 @@ const initialErrors = {
   password: "",
 };
 
-function Login({ history }) {
+function Login({ history, getUser }) {
   const [formState, setFormState] = useState(initialForm);
   const [formErrors, setFormErrors] = useState(initialErrors);
   const [disabled, setDisabled] = useState(true);
@@ -47,9 +72,8 @@ function Login({ history }) {
 
   const submitForm = (evt) => {
     evt.preventDefault();
-    console.log('click', formState)
-    getUser(formState);
-    history.push('/classList');
+    console.log('click', formState.email, formState.password);
+    getUser(formState.email, formState.password);
   };
 
   useEffect(() => {
@@ -131,4 +155,4 @@ function Login({ history }) {
   );
 }
 
-export default withRouter(Login);
+export default connect(null, { getUser })(withRouter(Login));

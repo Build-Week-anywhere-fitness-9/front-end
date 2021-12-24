@@ -97,7 +97,7 @@ const ClassList = ({ user, classes, history }) => {
 
 const mapStateToProps = state => {
     return {
-        user: state.userInfo.user.email,
+        user: state.userInfo.user,
         classes: state.classList.classes,
     };
 };

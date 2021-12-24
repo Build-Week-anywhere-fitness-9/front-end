@@ -11,7 +11,7 @@ import ClassForm from './Components/ClassForm';
 import ErrorScreen from './Components/Error';
 import LoadingScreen from './Components/Loading';
 
-function App({error, isFetching}) {
+function App({ error, isFetching}) {
   return (
     <div className="App">
       {/* header */}
@@ -20,7 +20,8 @@ function App({error, isFetching}) {
         {/* nav links */}
         <nav>
           <Link to="/">About</Link>
-          <Link to="/login">Login</Link>
+          {!localStorage.getItem('token') && <Link to="/login">Login</Link>}
+          {localStorage.getItem('token') && <Link to="/">Logout</Link>}
           <Link to="/signup">SignUp</Link>
         </nav>
 
