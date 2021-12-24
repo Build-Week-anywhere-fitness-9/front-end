@@ -84,6 +84,7 @@ const ClassList = ({ user, classes, history, isFetching, error }) => {
 
   return (
     <div className="classList">
+      <SearchBar />
       {focusClasses.map((i, idx) => (
         <div className="focusClass" key={idx}>
           <h3>{i.name}</h3>

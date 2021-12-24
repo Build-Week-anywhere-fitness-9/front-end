@@ -15,7 +15,7 @@ function App() {
         <h1>Anywhere Fitness</h1>
         {/* nav links */}
         <nav>
-          <SearchBar />
+          <Link to="/classlist">Classes</Link>
           <Link to="/">About</Link>
           <Link to="/login">Login</Link>
           <Link to="/signup">SignUp</Link>
