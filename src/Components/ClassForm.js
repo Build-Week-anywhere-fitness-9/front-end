@@ -337,7 +337,7 @@ export default function ClassForm({ reschedule, update }) {
 }
 
 // styles
-const StyledFormContainer = styled.main`
+const StyledFormContainer = styled.div`
   margin-top: 2rem;
   form {
     display: flex;
@@ -367,5 +367,4 @@ const StyledFormContainer = styled.main`
       width: 100%;
       justify-content: space-evenly;
     }
-  }
-`;
+  }`

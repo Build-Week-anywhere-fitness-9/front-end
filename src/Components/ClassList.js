@@ -7,7 +7,6 @@ const ClassList = ({ user, classes, history }) => {
     const focusClasses = [];
     const otherClasses = [];
     
-    console.log('user', user);
     classes.forEach(oneClass => {
         if(user === oneClass.owner) {focusClasses.push(oneClass)}
         else if(oneClass.participants.includes(user)) {focusClasses.push(oneClass)}

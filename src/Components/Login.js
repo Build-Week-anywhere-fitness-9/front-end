@@ -72,8 +72,14 @@ function Login({ history, getUser }) {
 
   const submitForm = (evt) => {
     evt.preventDefault();
+<<<<<<< HEAD
     console.log('click', formState.email, formState.password);
     getUser(formState.email, formState.password);
+=======
+    console.log('click', formState)
+    getUser(formState.email, formState.password);
+    history.push('/classList');
+>>>>>>> 30129bfba390dbea17ee59b9bafe45781c3fd8de
   };
 
   useEffect(() => {

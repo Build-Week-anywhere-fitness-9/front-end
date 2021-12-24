@@ -2,7 +2,11 @@ import React, { useState, useEffect } from "react";
 import { connect } from 'react-redux';
 import schema from "../Validation/signUpSchema";
 import * as yup from "yup";
+<<<<<<< HEAD
 import { getUser } from '../actions/UserActions';
+=======
+import { newUser } from '../actions/UserActions';
+>>>>>>> 30129bfba390dbea17ee59b9bafe45781c3fd8de
 import { useHistory } from "react-router-dom";
 
 import {
@@ -27,7 +31,11 @@ const initialFormErrors = {
 
 const initialDisabled = true;
 
+<<<<<<< HEAD
 function SignUp({ getUser }) {
+=======
+function SignUp({ newUser }) {
+>>>>>>> 30129bfba390dbea17ee59b9bafe45781c3fd8de
   const [formState, setFormState] = useState(initialFormState);
   const [formErrors, setFormErrors] = useState(initialFormErrors);
   const [disabled, setDisabled] = useState(initialDisabled);
@@ -54,7 +62,11 @@ function SignUp({ getUser }) {
   const push = useHistory();
   const handleSubmit = (e) => {
     e.preventDefault();
+<<<<<<< HEAD
     getUser(formState.email, formState.password);
+=======
+    newUser(formState.email, formState.password);
+>>>>>>> 30129bfba390dbea17ee59b9bafe45781c3fd8de
     // push('/onboarding');
     push('/classlist');
   };
@@ -135,4 +147,8 @@ function SignUp({ getUser }) {
   );
 }
 
+<<<<<<< HEAD
 export default connect(null, { getUser })(SignUp);
+=======
+export default connect(null, { newUser })(SignUp);
+>>>>>>> 30129bfba390dbea17ee59b9bafe45781c3fd8de
